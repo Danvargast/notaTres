@@ -10,15 +10,18 @@ def agregarReserva(nombre, ciudad, tour, cantidad):
     datos["Tour"] = tour
     datos["Cantidad"] = cantidad
     reservas.append(datos)
+#Función quemalmacena los datos en un diccionario que luego se agrega a la lista reservas con los datos correspondientes, verifica si el tour ingresado esta entre los tours disponibles.
 def listarReservas(reservas):
     for reserva in reservas:
         print(reserva)
+#Imprime las reservas ingresadas separados por linea
 def imprimirDestino(reservas,tour):
     for i in reservas:
         if i["Tour"] == tour:
             with open(f"{tour}.txt", 'a') as archivo:
                 archivo.write(str(i))
                 archivo.write("\n")
+#Recorre la lista reservas, verifica si la reserva tiene el mismo nombre que necesitan filtrar y lo escribe todo en un archivo txt
 while True:
     print("Bienvenido a SurExplora, ¿Qué desea hacer?(Ingrese el número)")
     print("""1.Registrar reserva
@@ -32,6 +35,7 @@ while True:
         tour = input("Ingrese detalle del tour: ").capitalize()
         cantidad = int(input("Ingrese la cantidad de personas: "))
         agregarReserva(nombre,ciudad,tour,cantidad)
+#Pide los datos al usuario
     if opcion == 2:
         listarReservas(reservas)
     if opcion == 3:
